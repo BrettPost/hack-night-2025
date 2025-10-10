@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --envoy-red: #FF4B4B;
+  --envoy-white: #FFFFFF;
+  --envoy-dark-gray: #2E2E2E;
+  --envoy-light-gray: #FAFAFA;
+  --envoy-border: #E5E5E5;
+}
+
+@theme inline {
+  --color-envoy-red: var(--envoy-red);
+  --color-envoy-white: var(--envoy-white);
+  --color-envoy-dark-gray: var(--envoy-dark-gray);
+  --color-envoy-light-gray: var(--envoy-light-gray);
+  --color-envoy-border: var(--envoy-border);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: var(--envoy-light-gray);
+  color: var(--envoy-dark-gray);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--envoy-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e63939;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom focus styles */
+*:focus {
+  outline: 2px solid var(--envoy-red);
+  outline-offset: 2px;
+}
