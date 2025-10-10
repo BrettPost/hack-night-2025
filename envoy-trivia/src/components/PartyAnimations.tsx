@@ -21,18 +21,20 @@ export default function PartyAnimations({ isActive }: PartyAnimationsProps) {
   }>>([]);
 
   const yellowColors = ['#FFD700', '#FFC107', '#FFEB3B', '#FFB300', '#FFA000'];
-  const shapeTypes: ShapeType[] = ['circle', 'square', 'triangle', 'star', 'diamond', 'hexagon'];
 
   useEffect(() => {
+    const shapeTypes: ShapeType[] = ['circle', 'square', 'triangle', 'star', 'diamond', 'hexagon'];
+    
     if (!isActive) {
       setShapes([]);
       return;
     }
 
     const createShape = () => {
-      const path = Math.random() > 0.5 ? 'top' : (Math.random() > 0.5 ? 'left' : 'right');
+      const randomValue = Math.random();
+      const path: 'top' | 'left' | 'right' = randomValue > 0.66 ? 'top' : (randomValue > 0.33 ? 'left' : 'right');
       
-      let startX, startY;
+      let startX: number, startY: number;
       
       if (path === 'top') {
         // From top, stay in upper 30% of screen to avoid answer area

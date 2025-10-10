@@ -25,6 +25,7 @@ export default function Home() {
   const [appState, setAppState] = useState<AppState>('question');
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+  const [totalAnswers, setTotalAnswers] = useState(0);
 
   // Shuffle questions on mount (client-side only)
   useEffect(() => {
@@ -32,6 +33,23 @@ export default function Home() {
     setQuestionPool(shuffled);
     setCurrentQuestion(shuffled[0]);
   }, []);
+
+  // Poll for answer counts
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      if (appState === 'question') {
+        try {
+          const response = await fetch(`/api/stats?questionId=${currentQuestion.id}`);
+          const data = await response.json();
+          setTotalAnswers(data.total);
+        } catch (error) {
+          console.error('Failed to fetch stats:', error);
+        }
+      }
+    }, 1000); // Poll every second
+
+    return () => clearInterval(interval);
+  }, [appState, currentQuestion.id]);
 
   // Auto-advance to next question after both question and answer phases complete
   useEffect(() => {
@@ -41,12 +59,23 @@ export default function Home() {
     }
   }, [appState, selectedAnswer]);
 
-  const handleTimerComplete = () => {
+  const handleTimerComplete = async () => {
     if (appState === 'question') {
       // Switch to answer phase
       setAppState('answer');
       setShowCorrectAnswer(true);
     } else {
+      // Reset answers for old question
+      try {
+        await fetch('/api/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ questionId: currentQuestion.id }),
+        });
+      } catch (error) {
+        console.error('Failed to reset answers:', error);
+      }
+      
       // Switch to next question
       const nextIndex = (currentQuestionIndex + 1) % questionPool.length;
       setCurrentQuestionIndex(nextIndex);
@@ -54,6 +83,7 @@ export default function Home() {
       setAppState('question');
       setShowCorrectAnswer(false);
       setSelectedAnswer(null);
+      setTotalAnswers(0);
     }
   };
 
@@ -88,12 +118,21 @@ export default function Home() {
       
       {/* Timer - Top Right */}
       <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 z-10">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
-          <Timer
-            duration={appState === 'question' ? 30 : 20}
-            onComplete={handleTimerComplete}
-            isActive={true}
-          />
+        <div className="flex flex-col items-end gap-2">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
+            <Timer
+              duration={appState === 'question' ? 30 : 20}
+              onComplete={handleTimerComplete}
+              isActive={true}
+            />
+          </div>
+          {appState === 'question' && totalAnswers > 0 && (
+            <div className="bg-white border-2 border-[#FF4B4B] rounded-lg px-3 py-1 shadow-lg">
+              <p className="text-sm sm:text-base font-bold text-[#FF4B4B]">
+                {totalAnswers} {totalAnswers === 1 ? 'answer' : 'answers'}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
