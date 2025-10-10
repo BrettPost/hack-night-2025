@@ -52,3 +52,97 @@ body {
   outline: 2px solid var(--envoy-red);
   outline-offset: 2px;
 }
+
+/* Party Animations - Shapes from different directions */
+
+/* Shapes coming from top - arc across top of screen */
+@keyframes shape-top {
+  0% {
+    transform: translateX(-50px) translateY(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(50vw) translateY(15vh) rotate(180deg);
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(calc(100vw + 50px)) translateY(10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-shape-top {
+  animation: shape-top 10s ease-in-out forwards;
+}
+
+/* Shapes coming from left - arc along left side and top */
+@keyframes shape-left {
+  0% {
+    transform: translateX(0px) translateY(-20px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(30vw) translateY(10vh) rotate(180deg);
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(calc(100vw + 50px)) translateY(15vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-shape-left {
+  animation: shape-left 12s ease-in-out forwards;
+}
+
+/* Shapes coming from right - arc along right side and top */
+@keyframes shape-right {
+  0% {
+    transform: translateX(0px) translateY(-20px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-30vw) translateY(10vh) rotate(-180deg);
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(calc(-100vw - 50px)) translateY(15vh) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+.animate-shape-right {
+  animation: shape-right 12s ease-in-out forwards;
+}
+
+/* Pulse Animation for Engagement */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(255, 75, 75, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}

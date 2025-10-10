@@ -47,8 +47,8 @@ export default function Timer({ duration, onComplete, isActive }: TimerProps) {
   const strokeDashoffset = circumference - (timeLeft / duration) * circumference;
 
   return (
-    <div className="relative w-24 h-24">
-      <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+    <div className="relative w-full h-full">
+      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
         {/* Background circle */}
         <circle
           cx="50"
@@ -73,7 +73,7 @@ export default function Timer({ duration, onComplete, isActive }: TimerProps) {
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-2xl font-bold text-gray-800">
+        <span className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">
           {timeLeft}
         </span>
       </div>
