@@ -26,25 +26,27 @@ Build an app for Screens, Envoy's upcoming digital signage platform.
 
 ### Team name
 
-<!-- Team name -->
+Hire Me
 
 ### Team members
 
-1. \_<!-- Team member -->
+1. \_Brett Post
 2. \_<!-- Team member (optional) -->
 3. \_<!-- Team member (optional) -->
 
 ### App name
 
-<!-- App name -->
+Trivi-yuh
 
 ### App description (optional)
 
-<!-- App description -->
+Trivia
 
 <br/>
 
 ---
+
+![My Trivia UI](./Trivi-yuh.png)
 
 <br/>
 
