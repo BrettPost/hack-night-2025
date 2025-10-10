@@ -8,12 +8,30 @@ import { triviaQuestions, TriviaQuestion } from '@/data/trivia';
 
 type AppState = 'question' | 'answer';
 
+// Shuffle function to randomize questions
+const shuffleQuestions = (questions: TriviaQuestion[]) => {
+  const shuffled = [...questions];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export default function Home() {
+  const [questionPool, setQuestionPool] = useState<TriviaQuestion[]>(triviaQuestions);
   const [currentQuestion, setCurrentQuestion] = useState<TriviaQuestion>(triviaQuestions[0]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [appState, setAppState] = useState<AppState>('question');
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+
+  // Shuffle questions on mount (client-side only)
+  useEffect(() => {
+    const shuffled = shuffleQuestions(triviaQuestions);
+    setQuestionPool(shuffled);
+    setCurrentQuestion(shuffled[0]);
+  }, []);
 
   // Auto-advance to next question after both question and answer phases complete
   useEffect(() => {
@@ -30,9 +48,9 @@ export default function Home() {
       setShowCorrectAnswer(true);
     } else {
       // Switch to next question
-      const nextIndex = (currentQuestionIndex + 1) % triviaQuestions.length;
+      const nextIndex = (currentQuestionIndex + 1) % questionPool.length;
       setCurrentQuestionIndex(nextIndex);
-      setCurrentQuestion(triviaQuestions[nextIndex]);
+      setCurrentQuestion(questionPool[nextIndex]);
       setAppState('question');
       setShowCorrectAnswer(false);
       setSelectedAnswer(null);

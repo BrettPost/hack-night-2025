@@ -9,86 +9,86 @@ export interface TriviaQuestion {
 export const triviaQuestions: TriviaQuestion[] = [
   {
     id: 1,
-    question: "What year was Envoy founded?",
-    answers: ["2013", "2014", "2015", "2016"],
+    question: "What is Larry Gadea's middle name?",
+    answers: ["Michael", "James", "David", "Robert"],
     correctAnswer: 0,
-    explanation: "Envoy was founded in 2013 by Larry Gadea."
+    explanation: "Larry's full name is Larry Michael Gadea - he goes by Larry, but Michael is his middle name!"
   },
   {
     id: 2,
-    question: "What is Envoy's primary product?",
-    answers: ["Visitor Management", "Employee Scheduling", "Office Security", "Meeting Rooms"],
+    question: "What year was Envoy founded?",
+    answers: ["2013", "2014", "2015", "2016"],
     correctAnswer: 0,
-    explanation: "Envoy's flagship product is visitor management software for modern offices."
+    explanation: "Envoy was founded in 2013 by Larry Gadea to revolutionize the workplace experience."
   },
   {
     id: 3,
-    question: "Which company acquired Envoy in 2021?",
-    answers: ["Microsoft", "Google", "Salesforce", "Amazon"],
-    correctAnswer: 2,
-    explanation: "Salesforce acquired Envoy in 2021 to expand their workplace solutions."
+    question: "What was Envoy's original name?",
+    answers: ["VisitorHub", "Receptionist", "CheckMate", "Envoy has always been Envoy"],
+    correctAnswer: 1,
+    explanation: "Envoy was originally called 'Receptionist' before rebranding to Envoy!"
   },
   {
     id: 4,
-    question: "What does Envoy's logo represent?",
-    answers: ["A door", "A handshake", "A building", "A wave"],
+    question: "Where is Envoy's headquarters located?",
+    answers: ["New York City", "San Francisco", "Austin", "Seattle"],
     correctAnswer: 1,
-    explanation: "Envoy's logo represents a handshake, symbolizing connection and welcome."
+    explanation: "Envoy is headquartered in San Francisco, California - the heart of tech innovation!"
   },
   {
     id: 5,
-    question: "How many employees does Envoy have?",
-    answers: ["50-100", "100-200", "200-500", "500+"],
-    correctAnswer: 2,
-    explanation: "Envoy has grown to over 200 employees across multiple offices."
+    question: "What inspired Larry to create Envoy?",
+    answers: ["A bad haircut", "A frustrating visitor sign-in experience", "A coffee shop", "His pet dog"],
+    correctAnswer: 1,
+    explanation: "Larry was inspired to create Envoy after experiencing the archaic visitor sign-in process at tech companies."
   },
   {
     id: 6,
-    question: "What is Envoy's company motto?",
-    answers: ["Welcome to the future", "Making offices work", "Connect better", "Workplace reimagined"],
+    question: "How many cups of coffee does the average Envoy employee drink per day?",
+    answers: ["1-2 cups", "3-4 cups", "5-6 cups", "We survive on vibes"],
     correctAnswer: 1,
-    explanation: "Envoy's mission is 'Making offices work' by simplifying workplace operations."
+    explanation: "The average Envoy team member drinks 3-4 cups of coffee per day to stay energized!"
   },
   {
     id: 7,
-    question: "Which feature is NOT part of Envoy's platform?",
-    answers: ["Visitor check-in", "Package delivery", "Room booking", "Email marketing"],
-    correctAnswer: 3,
-    explanation: "Envoy focuses on workplace operations, not marketing tools."
+    question: "What is Envoy's signature color?",
+    answers: ["Blue", "Red", "Green", "Purple"],
+    correctAnswer: 1,
+    explanation: "Envoy Red (#FF4B4B) is the signature color that represents energy, warmth, and welcome!"
   },
   {
     id: 8,
-    question: "What color is Envoy's primary brand color?",
-    answers: ["Blue", "Red", "Green", "Purple"],
-    correctAnswer: 1,
-    explanation: "Envoy's signature color is red (#FF4B4B), representing energy and welcome."
+    question: "What's the most common snack in Envoy's office?",
+    answers: ["Granola bars", "Trail mix", "Pizza", "Fruit"],
+    correctAnswer: 0,
+    explanation: "Granola bars are the go-to snack for busy Envoy employees on the move!"
   },
   {
     id: 9,
-    question: "What is the name of Envoy's visitor management app?",
-    answers: ["Envoy Protect", "Envoy Visitors", "Envoy Check-in", "Envoy Welcome"],
-    correctAnswer: 0,
-    explanation: "Envoy Protect is the main visitor management platform that helps offices manage guests."
+    question: "Which famous company was NOT an early Envoy customer?",
+    answers: ["Dropbox", "Pinterest", "McDonald's", "Slack"],
+    correctAnswer: 2,
+    explanation: "Tech companies like Dropbox, Pinterest, and Slack were early adopters. McDonald's... not so much!"
   },
   {
     id: 10,
-    question: "Which industry does Envoy primarily serve?",
-    answers: ["Healthcare", "Education", "Corporate Offices", "Retail"],
-    correctAnswer: 2,
-    explanation: "Envoy primarily serves corporate offices and modern workplaces with visitor management solutions."
+    question: "What does Envoy's logo represent?",
+    answers: ["A door", "A handshake", "A building", "A wave"],
+    correctAnswer: 1,
+    explanation: "Envoy's logo represents a handshake, symbolizing the warm welcome and connection we provide!"
   },
   {
     id: 11,
-    question: "What feature helps with package delivery management?",
-    answers: ["Envoy Deliveries", "Package Tracking", "Delivery Notifications", "All of the above"],
-    correctAnswer: 3,
-    explanation: "Envoy offers comprehensive package delivery management including tracking and notifications."
+    question: "How many visitors has Envoy processed worldwide?",
+    answers: ["1 million", "10 million", "100 million+", "500 thousand"],
+    correctAnswer: 2,
+    explanation: "Envoy has processed over 100 million visitors worldwide! That's a lot of hellos!"
   },
   {
     id: 12,
-    question: "Which company is NOT a competitor of Envoy?",
-    answers: ["Proxy", "The Receptionist", "iLobby", "Slack"],
-    correctAnswer: 3,
-    explanation: "Slack is a communication platform, not a visitor management competitor."
+    question: "What's the unofficial Envoy office pet name?",
+    answers: ["Sir Barks-a-Lot", "Office dogs vary", "No pets allowed", "Mr. Whiskers"],
+    correctAnswer: 1,
+    explanation: "Envoy is dog-friendly! Multiple furry friends join the team, making every day a bit more pawsome!"
   }
 ];
