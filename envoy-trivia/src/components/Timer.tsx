@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface TimerProps {
   duration: number;
@@ -10,6 +10,12 @@ interface TimerProps {
 
 export default function Timer({ duration, onComplete, isActive }: TimerProps) {
   const [timeLeft, setTimeLeft] = useState(duration);
+  const onCompleteRef = useRef(onComplete);
+
+  // Keep the ref updated
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   useEffect(() => {
     if (!isActive) return;
@@ -17,7 +23,10 @@ export default function Timer({ duration, onComplete, isActive }: TimerProps) {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          onComplete();
+          // Use setTimeout to defer the callback until after render
+          setTimeout(() => {
+            onCompleteRef.current();
+          }, 0);
           return duration;
         }
         return prev - 1;
@@ -25,7 +34,7 @@ export default function Timer({ duration, onComplete, isActive }: TimerProps) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isActive, duration, onComplete]);
+  }, [isActive, duration]);
 
   useEffect(() => {
     if (isActive) {

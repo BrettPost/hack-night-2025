@@ -14,24 +14,24 @@ export default function Home() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
 
-  // Auto-advance to next question
+  // Auto-advance to next question after both question and answer phases complete
   useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (currentQuestionIndex + 1) % triviaQuestions.length;
-      setCurrentQuestionIndex(nextIndex);
-      setCurrentQuestion(triviaQuestions[nextIndex]);
-      setSelectedAnswer(null);
-      setShowCorrectAnswer(false);
-    }, 50000); // 30s question + 20s answer = 50s total
-
-    return () => clearInterval(interval);
-  }, [currentQuestionIndex]);
+    if (appState === 'question' && selectedAnswer !== null) {
+      // This will be handled by the timer completion
+      return;
+    }
+  }, [appState, selectedAnswer]);
 
   const handleTimerComplete = () => {
     if (appState === 'question') {
+      // Switch to answer phase
       setAppState('answer');
       setShowCorrectAnswer(true);
     } else {
+      // Switch to next question
+      const nextIndex = (currentQuestionIndex + 1) % triviaQuestions.length;
+      setCurrentQuestionIndex(nextIndex);
+      setCurrentQuestion(triviaQuestions[nextIndex]);
       setAppState('question');
       setShowCorrectAnswer(false);
       setSelectedAnswer(null);
